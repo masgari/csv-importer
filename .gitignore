@@ -1,0 +1,9 @@
+
+target/
+data/
+.idea/
+
+*.iml
+test.db
+
+Makefile
