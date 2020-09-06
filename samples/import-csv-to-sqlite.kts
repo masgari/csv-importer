@@ -1,7 +1,3 @@
-import csvimporter.dsl.task
-import org.jetbrains.exposed.sql.IntegerColumnType
-import org.jetbrains.exposed.sql.VarCharColumnType
-
 task {
     source {
         path = "samples/restaurant.csv"
@@ -12,12 +8,12 @@ task {
             path("test.db")
         }
         intIdTable("restaurants-dsl") {
-            "name" oftype VarCharColumnType(colLength = 50)
-            "city" oftype VarCharColumnType(colLength = 50)
-            "phone" oftype VarCharColumnType(colLength = 50)
-            "type" oftype VarCharColumnType(colLength = 50)
-            "address" oftype VarCharColumnType(colLength = 255)
-            "cluster" oftype IntegerColumnType()
+            "name" oftype varchar(50)
+            "city" oftype varchar(50)
+            "phone" oftype varchar(50)
+            "type" oftype varchar(50)
+            "address" oftype varchar(255)
+            "cluster" oftype int()
 
             "name" indexed "idx_name"
         }
