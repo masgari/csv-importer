@@ -13,7 +13,7 @@ Run `mvn clean install`
 java -jar runner/target/csv-importer-runner-1.0-SNAPSHOT-jar-with-dependencies.jar script <path to your kts script>
 
 # example
-#java -jar runner/target/csv-importer-runner-1.0-SNAPSHOT-jar-with-dependencies.jar script samples/import-csv-to-sqlite.kts
+java -jar runner/target/csv-importer-runner-1.0-SNAPSHOT-jar-with-dependencies.jar script samples/import-csv-to-sqlite.kts
 ```
  
 ## Sample DSL 
@@ -23,21 +23,20 @@ task {
         path = "samples/restaurant.csv"
     }
     db {
-        clear = true // delete all existing records
+        clear = true
         sqlite {
             path("test.db")
         }
         intIdTable("restaurants-dsl") {
-            "name" oftype VarCharColumnType(colLength = 50)
-            "city" oftype VarCharColumnType(colLength = 50)
-            "phone" oftype VarCharColumnType(colLength = 50)
-            "type" oftype VarCharColumnType(colLength = 50)
-            "address" oftype VarCharColumnType(colLength = 255)
-            "cluster" oftype IntegerColumnType()
+            "name" oftype varchar(50)
+            "city" oftype varchar(50)
+            "phone" oftype varchar(50)
+            "type" oftype varchar(50)
+            "address" oftype varchar(255)
+            "cluster" oftype int()
 
             "name" indexed "idx_name"
         }
-
         mapping {
             "name" to "name"
             "city" to "city"
